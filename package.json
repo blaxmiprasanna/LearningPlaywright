@@ -1,0 +1,14 @@
+{
+  "name": "learningplaywright",
+  "version": "1.0.0",
+  "description": "howToLearnPlaywright",
+  "license": "ISC",
+  "author": "PrasannaKumarBS",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {},
+  "devDependencies": {
+    "@playwright/test": "^1.59.1",
+    "@types/node": "^25.6.0"
+  }
+}
