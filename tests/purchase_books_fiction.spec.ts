@@ -1,5 +1,6 @@
-import { test } from '../support/fixture';
+import { expect, test } from '../support/fixture';
 import { Data } from '../support/testData';
+import { globally } from '../support/helper';
 
 test.describe('Purchase Books Fiction', () => {
   test('should successfully purchase item from Books category', async ({ 
@@ -14,7 +15,7 @@ test.describe('Purchase Books Fiction', () => {
     await login.loginToDemoWebShopApp(Data.Email, Data.Password);
 
     // Verify login was successful
-    await page.waitForTimeout(2000);
+    await expect(login.confirmLogin(Data.Email)).toBeVisible();
 
     // Navigate to Books category using page object method
     await purchaseBook.clickOnPurchaseBook();

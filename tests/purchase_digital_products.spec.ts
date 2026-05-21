@@ -1,4 +1,4 @@
-import { test } from '../support/fixture';
+import { test, expect } from '../support/fixture';
 import { Data } from '../support/testData';
 
 test.describe('Purchase Digital Products', () => {
@@ -14,7 +14,7 @@ test.describe('Purchase Digital Products', () => {
     await login.loginToDemoWebShopApp(Data.Email, Data.Password);
 
     // Verify login was successful
-    await page.waitForTimeout(2000);
+    await expect(login.confirmLogin(Data.Email)).toBeVisible();
 
     // Navigate to Digital products category using page object method
     await purchaseBook.clickOnPurchaseBook();
