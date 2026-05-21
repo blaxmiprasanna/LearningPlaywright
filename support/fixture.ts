@@ -1,20 +1,22 @@
-import { test as base, chromium, type Page } from '@playwright/test';
+import {test as base, expect} from '@playwright/test';
+import { Login } from '../pageObject/login';
+import { PurchaseBook } from '../pageObject/purchaseBook';
 
-export const test = base.extend<{ loginPage: Page }>({
-  loginPage: async ({}, use) => {
-    const context = await chromium.launchPersistentContext(
-      'C:\\Users\\blaxm\\AppData\\Local\\Google\\Chrome\\User Data',
-      {
-        headless: false,
-        channel: 'chrome',
-      }
-    );
-    const page = await context.newPage();
-    
-    // Use the page in tests
-    await use(page);
-    
-    // Cleanup after test
-    await context.close();
+type myFixture= {
+  login: Login;
+  purchaseBook: PurchaseBook;
+}
+
+const test = base.extend<myFixture>({
+  login: async({page}, use) =>{
+    const login = new Login(page);
+    await use(login);
   },
+  purchaseBook: async({page}, use) =>{
+    const purchaseBook = new PurchaseBook(page);
+    await use(purchaseBook);
+  }
 });
+
+export { test, expect };
+   
