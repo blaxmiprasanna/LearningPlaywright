@@ -3,6 +3,7 @@ import { Login } from '../pageObject/login';
 import {PurchaseBook} from '../pageObject/purchaseBook';
 import {Data} from '../support/testData';
 
+//how to purchase book in the demo retail site
 test('Login', async({page, login, purchaseBook}) => {
     await page.goto('');
     await login.loginToDemoWebShopApp(Data.Email, Data.Password);
