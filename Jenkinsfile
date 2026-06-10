@@ -60,7 +60,7 @@ ${BUILD_URL}
 Playwright Report:
 ${BUILD_URL}Playwright_Report/
 """,
-                to: "yourgmail@gmail.com"
+                to: "botty.prasanna@gmail.com"
             )
         }
     }
