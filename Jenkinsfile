@@ -35,6 +35,7 @@ pipeline {
                 sh 'npx playwright test --project chromium'
             }
         }
+
     }
 
     post {
@@ -47,6 +48,21 @@ pipeline {
                 reportFiles: 'index.html',
                 reportName: 'Playwright Report'
             ])
+
+            emailext(
+                subject: "Playwright Test Results - ${currentBuild.currentResult}",
+                body: """
+Build Status: ${currentBuild.currentResult}
+
+Build URL:
+${BUILD_URL}
+
+Playwright Report:
+${BUILD_URL}Playwright_Report/
+""",
+                to: "yourgmail@gmail.com"
+            )
         }
     }
+
 }
